@@ -1,0 +1,57 @@
+/* Orange/White Theme for Donation Page */
+:root {
+  --orange: #FF8C00;
+  --light-orange: #FFA500;
+  --white: #FFFFFF;
+  --off-white: #FFF8F0;
+  --text-dark: #333333;
+}
+
+/* Backgrounds */
+.bg-orange { background-color: var(--orange); }
+.bg-orange-gradient { 
+  background: linear-gradient(135deg, var(--orange), var(--light-orange));
+}
+.bg-off-white { background-color: var(--off-white); }
+
+/* Text Colors */
+.text-orange { color: var(--orange); }
+
+/* Buttons */
+.btn-orange {
+  background-color: var(--orange);
+  color: white;
+  border: none;
+}
+.btn-orange:hover {
+  background-color: #E67300;
+  color: white;
+}
+
+/* Payment Buttons */
+.btn-payment {
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 500;
+  min-width: 150px;
+}
+.btn-phonepe {
+  background-color: #5F259F;
+  color: white;
+}
+.btn-google-pay {
+  background-color: #4285F4;
+  color: white;
+}
+.btn-paytm {
+  background-color: #00BAF2;
+  color: white;
+}
+
+/* Cards */
+.border-orange {
+  border: 2px solid var(--orange) !important;
+}
+.card-header.bg-orange {
+  border-bottom: 2px solid var(--orange);
+}
