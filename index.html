@@ -190,7 +190,6 @@
     <p>Email: shreeshyamgousevasamitimakrana@gmail.com<br />Phone: +917240400108<br />Location: Makrana, Nagaur, Rajasthan, India</p>
   </section>
 </footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
   const form = document.getElementById('autoPayForm');
@@ -200,17 +199,16 @@
   downloadBtn.textContent = "Download PDF Receipt";
   downloadBtn.style.marginTop = "1rem";
   downloadBtn.style.display = "inline-block";
+  form?.parentNode?.appendChild(downloadBtn);
 
   const whatsappLink = document.createElement("a");
   whatsappLink.textContent = "Send via WhatsApp";
   whatsappLink.target = "_blank";
   whatsappLink.style.marginLeft = "10px";
   whatsappLink.style.display = "inline-block";
+  form?.parentNode?.appendChild(whatsappLink);
 
-  form.parentNode.appendChild(downloadBtn);
-  form.parentNode.appendChild(whatsappLink);
-
-  form.addEventListener('submit', function(e) {
+  form?.addEventListener('submit', function(e) {
     e.preventDefault();
     const name = form.name.value;
     const date = new Date().toLocaleDateString();
@@ -230,16 +228,18 @@
     downloadBtn.onclick = () => {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
-      doc.setFontSize(14);
-      doc.text("Donation Receipt", 20, 20);
-      doc.text(`Name: ${name}`, 20, 40);
-      doc.text(`Date: ${date}`, 20, 50);
-      doc.text("Address:", 20, 60);
-      doc.text(address, 30, 70);
-      doc.text(`Amount: ₹${amount}`, 20, 90);
+      doc.setFontSize(16);
+      doc.text("Donation Receipt", 105, 20, null, null, "center");
+      doc.setFontSize(12);
+      doc.text(`Name: ${name}`, 20, 120);
+      doc.text(`Date: ${date}`, 20, 130);
+      doc.text("Address:", 20, 140);
+      doc.text(address, 30, 150);
+      doc.text(`Amount: ₹${amount}`, 20, 170);
       doc.save("donation_receipt.pdf");
     };
   });
 </script>
+</p>2025. All rights are reserved by Shree Shyam Nirashrit Gou Sewa Samiti Makrana</p>
 </body>
 </html>
