@@ -189,9 +189,57 @@
     <h2>Contact Us</h2>
     <p>Email: shreeshyamgousevasamitimakrana@gmail.com<br />Phone: +917240400108<br />Location: Makrana, Nagaur, Rajasthan, India</p>
   </section>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 Shree Shyam Nirashrit Gou Sewa Samiti Makrana. All rights reserved.</p>
-  </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  const form = document.getElementById('autoPayForm');
+  const receipt = document.getElementById('receipt');
+
+  const downloadBtn = document.createElement("button");
+  downloadBtn.textContent = "Download PDF Receipt";
+  downloadBtn.style.marginTop = "1rem";
+  downloadBtn.style.display = "inline-block";
+
+  const whatsappLink = document.createElement("a");
+  whatsappLink.textContent = "Send via WhatsApp";
+  whatsappLink.target = "_blank";
+  whatsappLink.style.marginLeft = "10px";
+  whatsappLink.style.display = "inline-block";
+
+  form.parentNode.appendChild(downloadBtn);
+  form.parentNode.appendChild(whatsappLink);
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = form.name.value;
+    const date = new Date().toLocaleDateString();
+    const address = form.address.value;
+    const amount = form.amount.value;
+    const phone = form.phone?.value || "";
+
+    document.getElementById('rName').textContent = name;
+    document.getElementById('rDate').textContent = date;
+    document.getElementById('rAddress').textContent = address;
+    document.getElementById('rAmount').textContent = amount;
+    receipt.style.display = 'block';
+
+    const message = `🧾 *Donation Receipt*%0AName: ${name}%0ADate: ${date}%0AAddress: ${address}%0AAmount: ₹${amount}`;
+    whatsappLink.href = `https://wa.me/91${phone}?text=${message}`;
+
+    downloadBtn.onclick = () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFontSize(14);
+      doc.text("Donation Receipt", 20, 20);
+      doc.text(`Name: ${name}`, 20, 40);
+      doc.text(`Date: ${date}`, 20, 50);
+      doc.text("Address:", 20, 60);
+      doc.text(address, 30, 70);
+      doc.text(`Amount: ₹${amount}`, 20, 90);
+      doc.save("donation_receipt.pdf");
+    };
+  });
+</script>
 </body>
 </html>
