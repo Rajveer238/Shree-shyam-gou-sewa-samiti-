@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shree Shyam Nirashrit Gou Sewa Samiti Makrana</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     body {
       margin: 0;
@@ -139,7 +138,6 @@
   <section id="donate">
     <h2>Donate</h2>
     <p>Your donations help us buy medicines, food, and maintain our hospital facilities. Support Gau Seva today.</p>
-    <button onclick="payNow()">Donate via Razorpay</button>
 
     <div class="donation-methods">
       <div class="donation-method">
@@ -148,15 +146,22 @@
         <p>UPI ID: 12300210004012@ucobank</p>
       </div>
       <div class="donation-method">
-        <h4>Credit/Debit Card</h4>
-        <img src="images/credit-card.png" alt="Credit Card Icon" />
-        <p>Pay securely using your credit or debit card</p>
+        <h4>Pay with Google Pay</h4>
+        <a href="https://pay.google.com/gp/p/ui/pay" target="_blank">
+          <img src="images/googlepay-qr.png" alt="Google Pay QR Code" />
+        </a>
       </div>
       <div class="donation-method">
-        <h4>PhonePe</h4>
+        <h4>Pay with PhonePe</h4>
+        <a href="https://www.phonepe.com/" target="_blank">
+          <img src="images/phonepe-qr.png" alt="PhonePe QR Code" />
+        </a>
       </div>
       <div class="donation-method">
-        <h4>Google Pay</h4>
+        <h4>Pay with Paytm</h4>
+        <a href="https://paytm.com/" target="_blank">
+          <img src="images/paytm.png" alt="Paytm" />
+        </a>
       </div>
     </div>
 
@@ -173,45 +178,19 @@
     <div class="payment-logos">
       <img src="images/visa.png" alt="Visa">
       <img src="images/mastercard.png" alt="Mastercard">
-      <img src="images/razorpay-logo.png" alt="Razorpay">
       <img src="images/gpay.png" alt="Google Pay">
       <img src="images/phonepe.png" alt="PhonePe">
+      <img src="images/paytm.png" alt="Paytm">
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact Us</h2>
-    <p>Email: shreeshyamgousevasamitimakrana@gmail.com<br />Phone: +917240400108<br />Location: Mataji Mandir Ke Paas, Near Tanki Chouraha, Makrana(341505), Nagaur, Rajasthan, India</p>
+    <p>Email: shreeshyamgousevasamitimakrana@gmail.com<br />Phone: +917240400108<br />Location: Makrana, Nagaur, Rajasthan, India</p>
   </section>
 
   <footer>
     <p>&copy; 2025 Shree Shyam Nirashrit Gou Sewa Samiti Makrana. All rights reserved.</p>
   </footer>
-
-  <script>
-    function payNow() {
-      var options = {
-        "key": "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay Key ID
-        "amount": 50000, // Amount is in paise (₹500)
-        "currency": "INR",
-        "name": "Shree Shyam Nirashrit Gou Sewa Samiti",
-        "description": "Donation",
-        "image": "images/logo.png",
-        "handler": function (response){
-          alert("Payment successful. Payment ID: " + response.razorpay_payment_id);
-        },
-        "prefill": {
-          "name": "",
-          "email": "",
-          "contact": ""
-        },
-        "theme": {
-          "color": "#ff6600"
-        }
-      };
-      var rzp = new Razorpay(options);
-      rzp.open();
-    }
-  </script>
 </body>
 </html>
